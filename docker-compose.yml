@@ -1,0 +1,16 @@
+services: 
+  pds:
+    container_name: bluesky_pds
+    image: ghcr.io/bluesky-social/pds:latest
+    restart: unless-stopped
+    volumes:
+      - '/Docker/Config/bluesky_pds/pds:/pds'
+    env_file:
+      - /pds/pds.env
+    networks:
+      media:
+        ipv4_address: 172.18.1.14
+networks:
+  media:
+    name: media
+    external: true
